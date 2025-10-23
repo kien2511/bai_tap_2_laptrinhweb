@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý Sinh viên - nguyentrungkien</title>
+  <link rel="stylesheet" href="nguyentrungkien.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Hệ thống Quản lý Sinh viên (Demo)</h1>
+      <p class="muted">Giao diện front-end gọi API Node-RED. Nhập tên/email để tìm, hoặc thêm/sửa/xóa bản ghi.</p>
+    </header>
+
+    <section class="search-area">
+      <div class="row">
+        <input id="q" type="text" placeholder="Nhập tên hoặc email để tìm..." />
+        <button id="btnSearch">Tìm kiếm</button>
+        <button id="btnRefresh" class="ghost">Tải lại</button>
+      </div>
+      <div class="row small">
+        <label>Hiển thị <select id="pageSize"><option>5</option><option selected>10</option><option>20</option></select> bản ghi / trang</label>
+      </div>
+    </section>
+
+    <section class="result-area">
+      <div id="status" class="status">Chưa tìm.</div>
+      <div id="results" class="cards"></div>
+
+      <div id="pager" class="pager" style="display:none;">
+        <button id="prevPage">« Trước</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage">Sau »</button>
+      </div>
+    </section>
+
+    <section class="form-area">
+      <h2>Thêm sinh viên mới</h2>
+      <form id="addForm">
+        <input name="FullName" placeholder="Họ và tên" required />
+        <input name="Email" placeholder="Email" type="email" />
+        <input name="Major" placeholder="Ngành" />
+        <input name="Year" placeholder="Năm (số)" type="number" min="1" />
+        <div class="row">
+          <button type="submit">Thêm</button>
+          <button type="button" id="clearForm" class="ghost">Xóa form</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <small>Trang demo: nguyentrungkien.com — Frontend gọi API Node-RED tại <code>/api/...</code></small>
+    </footer>
+  </main>
+
+  <!-- Modal sửa -->
+  <div id="editModal" class="modal" aria-hidden="true">
+    <div class="modal-panel">
+      <h3>Chỉnh sửa sinh viên</h3>
+      <form id="editForm">
+        <input name="StudentID" type="hidden" />
+        <input name="FullName" placeholder="Họ và tên" required />
+        <input name="Email" placeholder="Email" type="email" />
+        <input name="Major" placeholder="Ngành" />
+        <input name="Year" placeholder="Năm (số)" type="number" min="1" />
+        <div class="row">
+          <button type="submit">Lưu</button>
+          <button type="button" id="cancelEdit" class="ghost">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="nguyentrungkien.js"></script>
+</body>
+</html>
+
